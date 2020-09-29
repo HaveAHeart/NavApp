@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NavApp</string>
+    <string name="title_act1">Act1</string>
+    <string name="title_act2">Act2</string>
+    <string name="title_act3">Act3</string>
+    <string name="title_actAbout">About</string>
+    <string name="about">About</string>
+</resources>
