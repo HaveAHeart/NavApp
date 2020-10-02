@@ -11,21 +11,15 @@ class activity2 : AppCompatActivity() {
         setContentView(R.layout.activity_2)
 
         buttonAct2toAct1.setOnClickListener {
-            finish()
+            startActivity(Intent(applicationContext, activity3::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK))
         }
         buttonAct2toAct3.setOnClickListener {
-            startActivityForResult(Intent(applicationContext, activity3::class.java), 2)
+            startActivity(Intent(applicationContext, activity3::class.java))
         }
 
         nav_view2.setOnNavigationItemReselectedListener {
             startActivity(Intent(applicationContext, activityAbout::class.java))
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == 1) {
-            finish()
         }
     }
 

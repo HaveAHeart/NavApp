@@ -11,11 +11,10 @@ class activity3 : AppCompatActivity() {
         setContentView(R.layout.activity_3)
 
         buttonAct3toAct1.setOnClickListener {
-            setResult(1)
-            finish()
+            startActivity(Intent(applicationContext, MainActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
         }
         buttonAct3toAct2.setOnClickListener {
-            setResult(2)
             finish()
         }
 

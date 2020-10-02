@@ -11,7 +11,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         buttonAct1toAct2.setOnClickListener {
-            startActivity(Intent(this@MainActivity, activity2::class.java))
+            startActivity(Intent(applicationContext, activity2::class.java))
+        }
+
+        buttonAct1toAct3.setOnClickListener {
+            startActivity(Intent(applicationContext, activity3::class.java))
         }
 
         nav_view1.setOnNavigationItemReselectedListener {

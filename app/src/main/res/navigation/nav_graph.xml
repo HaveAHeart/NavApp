@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/frag1">
+
+    <fragment
+        android:id="@+id/frag1"
+        android:name="com.example.navapp.frag1"
+        android:label="frag1" >
+        <action
+            android:id="@+id/action_frag1_to_frag2"
+            app:destination="@id/frag2" />
+        <action
+            android:id="@+id/action_frag1_to_frag3"
+            app:destination="@id/frag3" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag2"
+        android:name="com.example.navapp.frag2"
+        android:label="frag2" >
+        <action
+            android:id="@+id/action_frag2_to_frag3"
+            app:destination="@id/frag3" />
+        <action
+            android:id="@+id/action_frag2_to_frag1"
+            app:destination="@id/frag1" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag3"
+        android:name="com.example.navapp.frag3"
+        android:label="frag3" >
+        <action
+            android:id="@+id/action_frag3_to_frag2"
+            app:destination="@id/frag2" />
+        <action
+            android:id="@+id/action_frag3_to_frag1"
+            app:destination="@id/frag1" />
+    </fragment>
+    <activity
+        android:id="@+id/activityAbout"
+        android:name="com.example.navapp.activityAbout"
+        android:label="activityAbout" />
+</navigation>
