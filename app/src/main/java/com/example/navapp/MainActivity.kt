@@ -2,14 +2,12 @@ package com.example.navapp
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BotMenuListener() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         buttonAct1toAct2.setOnClickListener {
             startActivity(Intent(applicationContext, activity2::class.java))
         }
@@ -17,10 +15,5 @@ class MainActivity : AppCompatActivity() {
         buttonAct1toAct3.setOnClickListener {
             startActivity(Intent(applicationContext, activity3::class.java))
         }
-
-        nav_view1.setOnNavigationItemReselectedListener {
-            startActivity(Intent(applicationContext, activityAbout::class.java))
-        }
     }
-
 }
