@@ -1,5 +1,6 @@
 package com.example.navapp
 
+import android.content.pm.ActivityInfo
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
@@ -47,13 +48,16 @@ class ExampleInstrumentedTest {
         onView(withId(R.id.buttonAct3toAct2f)).check(matches(isDisplayed()))
 
         pressBack()
+
         onView(withId(R.id.buttonAct1toAct2f)).check(matches(isDisplayed()))
         onView(withId(R.id.buttonAct1toAct3f)).check(matches(isDisplayed()))
 
         //1f - about - 1f
         onView(withId(R.id.navigation_about)).perform(click())
         onView(withId(R.id.about_text)).check(matches(isDisplayed()))
+
         pressBack()
+
         onView(withId(R.id.buttonAct1toAct2f)).check(matches(isDisplayed()))
         onView(withId(R.id.buttonAct1toAct3f)).check(matches(isDisplayed()))
     }
@@ -163,5 +167,56 @@ class ExampleInstrumentedTest {
 
         onView(withId(R.id.buttonAct1toAct2f)).check(matches(isDisplayed()))
         onView(withId(R.id.buttonAct1toAct3f)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun orientationTest() {
+        //1f screen rotation, check
+        activityRule.scenario.onActivity { activity ->
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
+
+        onView(withId(R.id.buttonAct1toAct2f)).check(matches(isDisplayed()))
+        onView(withId(R.id.buttonAct1toAct3f)).check(matches(isDisplayed()))
+
+        activityRule.scenario.onActivity { activity ->
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+
+        //2f - screen rotation, check
+        onView(withId(R.id.buttonAct1toAct2f)).perform(click())
+
+        activityRule.scenario.onActivity { activity ->
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
+
+        onView(withId(R.id.buttonAct2toAct1f)).check(matches(isDisplayed()))
+        onView(withId(R.id.buttonAct2toAct3f)).check(matches(isDisplayed()))
+
+        activityRule.scenario.onActivity { activity ->
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+
+        //3f - screen rotation, check
+        onView(withId(R.id.buttonAct2toAct3f)).perform(click())
+
+        activityRule.scenario.onActivity { activity ->
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
+
+        onView(withId(R.id.buttonAct3toAct1f)).check(matches(isDisplayed()))
+        onView(withId(R.id.buttonAct3toAct2f)).check(matches(isDisplayed()))
+
+        activityRule.scenario.onActivity { activity ->
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+        //about - screen rotation, check
+        onView(withId(R.id.navigation_about)).perform(click())
+
+        activityRule.scenario.onActivity { activity ->
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
+
+        onView(withId(R.id.about_text)).check(matches(isDisplayed()))
     }
 }
