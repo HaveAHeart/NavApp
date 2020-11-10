@@ -25,5 +25,6 @@ class frag1 : Fragment() {
         buttonAct1toAct3f.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_frag1_to_frag3)
         }
+
     }
 }
