@@ -155,6 +155,7 @@ class ExampleInstrumentedTest {
 
         pressBack()
 
+
         onView(withId(R.id.buttonAct3toAct1f)).check(matches(isDisplayed()))
         onView(withId(R.id.buttonAct3toAct2f)).check(matches(isDisplayed()))
 
