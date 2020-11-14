@@ -1,14 +1,16 @@
 package com.example.navapp
 
 import android.content.pm.ActivityInfo
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.Espresso.pressBack
+import androidx.lifecycle.Lifecycle
+import androidx.test.espresso.Espresso.*
+import androidx.test.espresso.NoActivityResumedException
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -167,6 +169,9 @@ class ExampleInstrumentedTest {
 
         onView(withId(R.id.buttonAct1toAct2f)).check(matches(isDisplayed()))
         onView(withId(R.id.buttonAct1toAct3f)).check(matches(isDisplayed()))
+
+        pressBackUnconditionally()
+        Assert.assertTrue(activityRule.scenario.state.isAtLeast(Lifecycle.State.DESTROYED))
     }
 
     @Test
